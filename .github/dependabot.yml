@@ -1,0 +1,38 @@
+version: 2
+
+registries:
+  npmjs:
+    type: npm-registry
+    url: https://registry.npmjs.org
+    token: ${{secrets.NPM_TOKEN}}
+
+updates:
+  # pnpm repos (pnpm-lock.yaml) — ecosystem is still "npm"
+  - package-ecosystem: npm
+    directory: /
+    registries:
+      - npmjs
+    schedule:
+      interval: weekly
+      day: monday
+    allow:
+      - dependency-name: "@antikythera/antikythera"
+    commit-message:
+      prefix: deps
+      include: scope
+    open-pull-requests-limit: 5
+
+  # bun repos (bun.lock or bun.lockb)
+  - package-ecosystem: bun
+    directory: /
+    registries:
+      - npmjs
+    schedule:
+      interval: weekly
+      day: monday
+    allow:
+      - dependency-name: "@antikythera/antikythera"
+    commit-message:
+      prefix: deps
+      include: scope
+    open-pull-requests-limit: 5
