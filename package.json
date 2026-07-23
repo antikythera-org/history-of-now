@@ -7,7 +7,7 @@
     "build": "node build.js"
   },
   "dependencies": {
-    "@antikythera/antikythera": "^1.5.2"
+    "@antikythera/antikythera": "^2.0.4"
   },
   "devDependencies": {
     "fs-extra": "^11.1.1",
